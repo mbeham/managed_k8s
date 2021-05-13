@@ -1,0 +1,90 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: mbeham
+  region: eu-west-1
+
+cloudWatch:
+  clusterLogging:
+    enableTypes:
+      - audit
+      - authenticator
+      - controllerManager
+
+vpc:
+  cidr: 10.10.0.0/16
+  autoAllocateIPv6: false
+  clusterEndpoints:
+    publicAccess: true
+    privateAccess: true
+  nat:
+    gateway: Single
+
+nodeGroups:
+  - name: worker-ondemand
+    instanceType: m5.large
+    desiredCapacity: 2
+    volumeEncrypted: true
+    privateNetworking: true
+    ssh:
+      allow: true
+      enableSsm: true
+    iam:
+      withAddonPolicies:
+        cloudWatch: true
+        certManager: true
+        ebs: true
+        efs: true
+        albIngress: true
+
+  - name: ingress
+    instanceType: m5.large
+    desiredCapacity: 2
+    volumeEncrypted: true
+    privateNetworking: true
+    ssh:
+      allow: true
+      enableSsm: true
+    iam:
+      withAddonPolicies:
+        cloudWatch: true
+        certManager: true
+    taints:
+      ingress: "true"
+    labels:
+      type: "ingress"
+
+managedNodeGroups:
+  - name: worker-sport
+    minSize: 2
+    maxSize: 2
+    volumeEncrypted: true
+    volumeSize: 100
+    privateNetworking: true
+    ssh:
+      allow: true
+      enableSsm: true
+    iam:
+      withAddonPolicies:
+        cloudWatch: true
+        certManager: true
+        ebs: true
+        efs: true
+        albIngress: true
+    spot: true
+    instanceTypes:
+      - t3.small
+      - t3.medium
+      - t3.large
+
+git:
+  repo:
+    url: "git@github.com:mbeham/mank8s_deployments.git"
+    branch: main
+    fluxPath: "cluster/mbeham1/"
+    user: "gitops"
+  operator:
+    namespace: flux
+    withHelm: true
