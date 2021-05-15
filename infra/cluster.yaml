@@ -69,6 +69,8 @@ nodeGroups:
   - name: worker-ondemand
     instanceType: m5.large
     desiredCapacity: 2
+    volumeSize: 100
+    volumeType: gp3
     volumeEncrypted: true
     privateNetworking: true
     ssh:
@@ -84,6 +86,8 @@ nodeGroups:
   - name: ingress
     instanceType: m5.large
     desiredCapacity: 2
+    volumeSize: 20
+    volumeType: gp3
     volumeEncrypted: true
     privateNetworking: true
     ssh:
@@ -93,16 +97,17 @@ nodeGroups:
       withAddonPolicies:
         cloudWatch: true
     taints:
-      ingress: "true"
+      dedicated: "ingress:NoSchedule"
     labels:
       type: "ingress"
 
 managedNodeGroups:
-  - name: worker-sport
+  - name: worker-spot
     minSize: 2
     maxSize: 10
     volumeEncrypted: true
     volumeSize: 100
+    volumeType: gp3
     privateNetworking: true
     ssh:
       allow: true
@@ -127,8 +132,9 @@ git:
   repo:
     url: "git@github.com:mbeham/mank8s_deployments.git"
     branch: main
-    fluxPath: "cluster/mbeham1/"
+    fluxPath: "cluster/mbeham/"
     user: "gitops"
+    email: "gitops@jambit.space"
   operator:
     namespace: flux
     withHelm: true
