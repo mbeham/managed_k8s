@@ -16,6 +16,6 @@ spec:
         app: app-<username>
     spec:
       containers:
-        - name: helloworld
+        - name: simpleservice
           image: 427770260507.dkr.ecr.eu-west-1.amazonaws.com/examples:simpleservice
           imagePullPolicy: Always
