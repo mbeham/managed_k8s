@@ -68,7 +68,7 @@ iam:
 nodeGroups:
   - name: worker-ondemand
     instanceType: m5.large
-    desiredCapacity: 2
+    desiredCapacity: 3
     volumeSize: 100
     volumeType: gp3
     volumeEncrypted: true
@@ -84,7 +84,7 @@ nodeGroups:
         albIngress: true
 
   - name: ingress
-    instanceType: m5.large
+    instanceType: m5.medium
     desiredCapacity: 2
     volumeSize: 20
     volumeType: gp3

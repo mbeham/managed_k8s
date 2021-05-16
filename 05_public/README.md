@@ -12,5 +12,3 @@ K8s-interne Service eine extern erreichbare IP-Adresse bekommt.
 
 - Wenn der Service eine Adresse wird sie in K9s unter `:services` als `External IP` angezeigt.   
     Die Verfügbarkeit kann aber kurz dauern (< 1m). Selbst wenn die Adresse angezeigt wird, dauert es nochmal kurz bis der Service erreichbar ist.
-
-- Alles wieder entfernen: `deployment`, `service`, `console`
