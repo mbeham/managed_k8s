@@ -18,3 +18,5 @@ Jetzt kann es passieren, dass der Scheduler beschließt, alle Pods des Deploymen
 - Doku ist hier: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
 - Wenn die Policy nicht erfüllt werden kann, sollte der Pod nicht geschedult werden. 
 - Test: 3 Pods laufen, 2 Pods nicht 
+
+- Rückbau: Skalierung auf 3 und das Node-Binding wieder entfernen
