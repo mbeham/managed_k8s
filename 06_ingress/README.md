@@ -13,5 +13,5 @@ Dafür ist ein Wildcard-DNS-Eintrag `*.managedk8s.jambit.space`eingerichtet.
 - Wir brauchen jetzt zusätzlich zum Service eine Ingress-Resource.  
   Darin steht für K8s die Beschreibungen, wie und ob der Service exponiert werden soll.  
   Ein Beispiel dazu findet sich hier: https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting  
-- Hostname für die Ingress-Ressource: `<username>.manmanagedk8s.jambit.space`
+- Hostname für die Ingress-Ressource: `<username>.managedk8s.jambit.space`
 - Zum Test im Browser ausprobieren.

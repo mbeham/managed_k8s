@@ -10,7 +10,7 @@ die wir den Nutzern unseres Webservers mitteilen (oder ins DNS eintragen) müsst
 - Dafür gibt es einen `service`, eine virtuelle IP vor mehreren Pods
 - Selbst einrichten:  
  Anleitung https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
-  - Service bitte sinnvoll benennen (`<username>`)
+  - Service bitte sinnvoll benennen (`app-<username>`)
   - Target-Port ist `8080`
 - Ziel: Service soll unter `app-<username>` aus dem Console-Pod erreichbar sein. (`curl http://app-<username>`)  
   DNS-Eintrag und -auflösung funktioniert automatisch. 
