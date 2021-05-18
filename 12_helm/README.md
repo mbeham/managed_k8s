@@ -8,7 +8,9 @@ Die Aufgabe hier ist, den bisherigen Service auf Helm zu portieren. Ausgangspunk
 
 - Mit `helm version` die Version prüfen. Mindestens Version 3.
 - Mit `helm create generic` wird ein Standard-Chart erzeugt. (`generic` ist dabei nur der Name des Charts)
-- Das Chart enthält eigentlich bereits alles was wir brauchen. (values.yaml sind nur die Default-Werte)
+- Das Chart enthält eigentlich bereits alles was wir brauchen. 
+- values.yaml sind die bisherigen Default-Werte, nur hier sind größere Änderungen notwendig.
+- Für Let's Encrypt bitte anfangs wieder Staging verwenden (`letsencrypt`, danach `letsencrypt-prod`)
 - Ausnahme: In der `deployment.yaml` ist es der falsche Port. Der Container `simpleservice` lauscht auf Port 8080
 - Ausnahme 2: In der `deployment.yaml` ist noch ein anderer Fehler drin. Der würde aber erst im Betrieb auffallen.
 - Doku für die Installation ist hier: https://helm.sh/docs/helm/helm_install/

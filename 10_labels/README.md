@@ -12,11 +12,11 @@ Die on-demand-Nodes sind mit `node-lifecycle=on-demand`gelabelt.
 
 Jetzt kann es passieren, dass der Scheduler beschließt, alle Pods des Deployments auf der gleichen Node zu starten. Der Selektor von gerade eben verbietet das nicht.
 
-- Deployment sollte auf 5 skaliert sein.
+- Deployment sollte auf 10 skaliert sein.
 - Ändert das bisherig Deployment ab, dass die Pods gleichmäßig über die AZs verteilt werden
     Die AZs sind im Label `topology.kubernetes.io/zone` hinterlegt
 - Doku ist hier: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
 - Wenn die Policy nicht erfüllt werden kann, sollte der Pod nicht geschedult werden. 
-- Test: 3 Pods laufen, 2 Pods nicht 
+- Test: einige Pods starten nicht, weil kein passender Node gefunden wurde
 
 - Rückbau: Skalierung auf 3 und das Node-Binding wieder entfernen
